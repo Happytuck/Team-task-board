@@ -20,7 +20,21 @@ let tasks = {
 };
 
 // GET tasks endpoint
-app.get("/index.js", (req, res) => {
+app.get("/", (req, res) => {
+  res.json("backend running now try /tasks");
+});
+
+app.get("/tasks", (req, res) => {
+  res.json(tasks);
+});
+
+app.post("/tasks", (req, res) => {
+  console.log("Recieved new task:", req.body)
+  const { column, task } = req.body;
+  if (!task[column]) {
+    return res.status(400).json({ error: "Invalid column"});
+  }
+  tasks[column].push(task);
   res.json(tasks);
 });
 

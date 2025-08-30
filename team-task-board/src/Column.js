@@ -1,6 +1,6 @@
 import TaskCard from "./TaskCard";
 
-function Column({ title, tasks }) {
+function Column({ title, tasks = [] }) {
     return (
         <div style={{ flex: 1, margin: "10px", padding: "10px", backgroundColor: "#f4f4f4", borderRadius: "5px" }}>
             <h2>{title}</h2>
